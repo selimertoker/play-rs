@@ -14,7 +14,7 @@ const ASCII:[char;256] = [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' 
 
 pub fn play_videos(config: Config) {
     ffmpeg::init().unwrap();
-    print!("\x1b[?1049h");
+    print!("\x1b[?1049h\x1b[?25l");
     for file in config.files {
 
         loop {
@@ -58,7 +58,7 @@ pub fn play_videos(config: Config) {
             }
         }
     }
-    print!("\x1b[?1049l");
+    print!("\x1b[?1049l\x1b[?25h");
 }
 
 // use ' ' or 'M' characters to display a black and white frame
@@ -72,7 +72,6 @@ pub fn display_frame_bw(frame: &Video, width: usize, height: usize, buffer_size:
         }
         framebuffer.push('\n');
     }
-    framebuffer.pop();
     framebuffer.pop();
     print!("\x1b[;H{}", framebuffer);
 }
@@ -88,7 +87,6 @@ pub fn display_frame_a(frame: &Video, width: usize, height: usize, buffer_size: 
         }
         framebuffer.push('\n');
     }
-    framebuffer.pop();
     framebuffer.pop();
     print!("\x1b[;H{}", framebuffer);
 }
@@ -110,7 +108,6 @@ pub fn display_frame_8(frame: &Video, width: usize, height: usize, buffer_size: 
         framebuffer.push('\n');
     }
     framebuffer.pop();
-    framebuffer.pop();
     print!("\x1b[;H{}", framebuffer);
 }
 
@@ -130,7 +127,6 @@ pub fn display_frame_24(frame: &Video, width: usize, height: usize, buffer_size:
         }
         framebuffer.push('\n');
     }
-    framebuffer.pop();
     framebuffer.pop();
     print!("\x1b[;H{}", framebuffer);
 }
