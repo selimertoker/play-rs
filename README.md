@@ -1,4 +1,7 @@
 # play-rs
-this can play videos in terminal using ascii characters to represent pixels.
-also supports do 8bit or 24bit color
-uses ffmpeg-next crate
+Play videos in terminal
+
+Uses ASCII characters to represent pixels.
+or uses ANSI codes to do display 8bit or 24bit color
+
+Uses ffmpeg-next crate
